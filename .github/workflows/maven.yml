@@ -10,9 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     steps:
     - uses: actions/checkout@v4
 
@@ -27,9 +24,3 @@ jobs:
       env:
         SOCRATA_TOKEN: ${{ secrets.SOCRATA_TOKEN }}
       run: ./mvnw -B package --file pom.xml -DskipTests
-
-    - name: Update dependency graph
-      if: github.event_name == 'push'
-      uses: advanced-security/maven-dependency-submission-action@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
