@@ -6,8 +6,7 @@ target/
 
 ### Secretos ###
 .env
-*.local
-application-local.properties
+
 
 ### STS ###
 .apt_generated
