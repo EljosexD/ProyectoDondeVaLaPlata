@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+header {
+    height: 40px;
+    background-color: #1b4398;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+}
+
+/* El contenedor abarca todo el espacio sobrante debajo del header */
+#contenedorMapa {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    overflow: hidden;
+}
+#map {
+    flex: 1;
+    height: 100%;
+}
+/* Ancho fijo para la barra lateral (aprox 30%) */
+#barraLateral {
+    width: 400px;
+    background-color: #fcfcfc;
+    padding: 15px 10px;
+    overflow-y: auto;
+    border-right: 1px solid #0e0d0d;
+}
+
+#barraLateral:hover {
+   box-shadow: 4px 0px 15px rgb(158, 0, 0);
+  
+}
+
+#contenedorBusqueda{
+    background-color: rgb(248, 248, 248);
+    height: 45px;                   /* Subimos un poco el alto para que respire el contenido */
+    display: flex;
+    align-items: center;            /* Centra verticalmente los elementos */
+    justify-content: space-between; /* Separa una etiqueta a la izquierda y la otra a la derecha */
+    gap: 10px;                      /* Espacio de seguridad entre las dos etiquetas */
+    padding: 0 15px;                /* Padding horizontal para que no peguen a los bordes */
+    border-radius: 20px;
+}
+#contenedorBusqueda:hover{
+    box-shadow: -6px 5px 6px rgba(192, 187, 187, 0.973);
+}
+#busqueda-municipio{
+    width: 100%;
+    background-color: transparent;
+    border-top: #f4f4f9 0px;
+    border-right: #f4f4f9 0px;
+    border-left: #f4f4f9 0px;
+    border-bottom: 2px #f4f4f9;
+    margin-right: 10px;
+}
+#busqueda-municipio:hover, :focus{
+    padding-bottom: 3px;
+    border-bottom: 2px black;
+}
+#busqueda-municipio:focus,#busqueda-municipio:active,#busqueda-municipio:hover {
+    outline: none;
+    border-top: #f4f4f9 0px;
+    border-right: #f4f4f9 0px;
+    border-left: #f4f4f9 0px;
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+#contenedorContratos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;                  /* Espacio vertical constante entre tarjetas */
+    margin-top: 15px;
+}
+
+/* La tarjeta individual */
+.tarjeta-contrato {
+    background-color: #ffffff;
+    border-radius: 12px;        /* Bordes redondeados sutiles */
+    padding: 14px;
+    display: flex;
+    flex-direction: column;     /* Apila Título -> Ciudad -> Estado verticalmente */
+    gap: 8px;                   /* Separación interna entre elementos */
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.tarjeta-contrato:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* 1. Título arriba */
+.contrato-titulo {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+/* 2. Ciudad debajo */
+.contrato-ciudad {
+    font-size: 12px;
+    color: #666666;
+    margin: 0;
+}
+
+/* 3. Fila inferior: Estado y detalles alineados en los extremos */
+.contrato-footer {
+    display: flex;
+    justify-content: space-between; /* Distribuye espacio entre estado y valor */
+    align-items: center;
+    margin-top: 4px;
+    padding-top: 8px;
+    border-top: 1px solid #f0f0f0;  /* Línea divisoria muy sutil */
+}
+
+/* Estilo para la etiqueta de Estado */
+.contrato-estado {
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 10px;
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+
+.contrato-valor {
+    font-size: 12px;
+    font-weight: bold;
+    color: #2e7d32;
+}
