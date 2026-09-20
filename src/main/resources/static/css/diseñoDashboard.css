@@ -20,7 +20,10 @@ header {
     padding: 0 20px;
     color: white;
 }
-
+header img{
+    width: 100%;
+    height: 50px;
+}
 /* El contenedor abarca todo el espacio sobrante debajo del header */
 #contenedorMapa {
     flex: 1;
