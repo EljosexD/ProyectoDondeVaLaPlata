@@ -29,7 +29,7 @@ public class RestBaseDatos {
         this.socrataToken = socrataToken;
     }
     private ContratosElectronicosDTO[] getApi(){
-        String url = "https://www.datos.gov.co/api/v3/views/jbjy-vk9h/query.json?pageNumber=1&pageSize=10&app_token="+ socrataToken;
+        String url = "https://www.datos.gov.co/api/v3/views/jbjy-vk9h/query.json?pageNumber=1&pageSize=50&app_token="+ socrataToken;
         return restTemplate.getForObject(url, ContratosElectronicosDTO[].class);
     }
 

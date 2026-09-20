@@ -34,4 +34,5 @@ public class ContratosElectronicosDTO {
     public static class Url{
         private String url;
     }
+
 }
