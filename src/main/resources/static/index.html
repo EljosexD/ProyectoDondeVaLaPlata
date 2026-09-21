@@ -1,23 +1,356 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DondeVaLaPlata</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dondevalaplata — Consulta la inversión de tu municipio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <header>
 
-    </header>
-    <body>
-<<<<<<< HEAD
-        <p>holas</p>
-=======
-        <p>Sss</p>
->>>>>>> bdc4075 (Corrigir)
-    </body>
-    <footer>
-        <a href="./dashboard.html">asda</a>
-    </footer>
+<header class="barra">
+  <div class="marca">
+    <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+      <circle cx="11" cy="11" r="7.5" fill="none" stroke="currentColor" stroke-width="2.4"/>
+      <line x1="16.5" y1="16.5" x2="24" y2="24" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+      <circle cx="11" cy="11" r="2.6" fill="var(--amarillo)"/>
+    </svg>
+    Dondevalaplata
+  </div>
+  <nav>
+    <a href="#consulta">Buscar municipio</a>
+    <a href="#fuentes">Sobre nosotros</a>
+  </nav>
+</header>
+
+<main>
+  <section class="bandera">
+    <div class="consulta" id="consulta">
+
+      <!-- PANTALLA 1 y 2 -->
+      <div id="pantallaLista">
+        <h1 id="titulo">Consulta dónde va la plata en tu municipio</h1>
+
+        <div class="pasos" id="pasos">
+          <span class="paso" data-paso="1"><b>1</b>Departamento</span><span class="sep">›</span>
+          <span class="paso" data-paso="2"><b>2</b>Municipio</span><span class="sep">›</span>
+          <span class="paso" data-paso="3"><b>3</b>Sector</span>
+        </div>
+
+        <button class="volver" id="volver" hidden>← Cambiar de departamento</button>
+
+        <div class="buscador">
+          <svg class="lupa" width="17" height="17" viewBox="0 0 26 26" aria-hidden="true">
+            <circle cx="11" cy="11" r="7.5" fill="none" stroke="currentColor" stroke-width="2.4"/>
+            <line x1="16.5" y1="16.5" x2="24" y2="24" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+          </svg>
+          <input id="campo" type="search" autocomplete="off" placeholder="Busca tu departamento" aria-label="Busca tu departamento">
+        </div>
+
+        <ul class="opciones" id="opciones"></ul>
+        <p class="vacio" id="vacio" hidden>No encontramos ese nombre. Revisa la escritura o elige otro de la lista.</p>
+
+        <div class="intro" id="intro">
+          <p>Revisar las cuentas de tu municipio es tu derecho. Escribe el nombre de tu departamento y descubre cómo se están invirtiendo los recursos.</p>
+          <figure aria-hidden="true">
+            <svg viewBox="0 0 150 190">
+              <ellipse cx="75" cy="184" rx="47" ry="6" fill="rgba(0,0,0,.10)"/>
+              <path d="M75 52c-30 0-44 22-47 48-2 20-3 40-3 60h100c0-20-1-40-3-60-3-26-17-48-47-48z" fill="#7C9CC4"/>
+              <path d="M75 52c-9 0-16 2-22 5l22 22 22-22c-6-3-13-5-22-5z" fill="#E9EFF7"/>
+              <path d="M28 108c-4 14-5 28-3 52h16l-2-56z" fill="#6A89B0"/>
+              <path d="M122 108c4 14 5 28 3 52h-16l2-56z" fill="#6A89B0"/>
+              <rect x="42" y="118" width="66" height="46" rx="4" fill="#F3F1EC" stroke="#C9C2B6" stroke-width="2"/>
+              <rect x="52" y="112" width="20" height="52" rx="3" fill="#2A4C86"/>
+              <rect x="76" y="112" width="20" height="52" rx="3" fill="#C8102E"/>
+              <rect x="57" y="120" width="10" height="20" rx="2" fill="#ffffff" opacity=".75"/>
+              <rect x="81" y="120" width="10" height="20" rx="2" fill="#ffffff" opacity=".75"/>
+              <path d="M38 132c6 12 16 22 28 26l6-12c-10-4-18-11-23-20z" fill="#B98A62"/>
+              <path d="M112 132c-6 12-16 22-28 26l-6-12c10-4 18-11 23-20z" fill="#B98A62"/>
+              <circle cx="75" cy="36" r="24" fill="#C68C63"/>
+              <path d="M51 34c-3-19 10-31 24-31s27 12 24 31c3-3 8-2 9 3 2 8-6 14-12 12-2 10-11 17-21 17s-19-7-21-17c-6 2-14-4-12-12 1-5 6-6 9-3z" fill="#2E211A"/>
+              <circle cx="66" cy="37" r="2.4" fill="#2E211A"/>
+              <circle cx="84" cy="37" r="2.4" fill="#2E211A"/>
+              <path d="M68 46c4 4 10 4 14 0" fill="none" stroke="#2E211A" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+          </figure>
+        </div>
+      </div>
+
+      <!-- PANTALLA 3 -->
+      <div id="pantallaMunicipio" hidden>
+        <button class="volver" id="volverMun">← Elegir otro municipio</button>
+        <div class="cabezaMun">
+          <h2 id="nombreMun"></h2>
+          <em id="metaMun"></em>
+        </div>
+        <div class="total">
+          <span>Presupuesto de inversión ejecutado en 2025</span>
+          <strong id="totalMun"></strong>
+        </div>
+        <p class="vacio" style="margin:0 0 12px">Toca un sector para ver en qué se gastó.</p>
+        <ul class="sectores" id="sectores"></ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="fuentes" id="fuentes">
+    <h2>Fuentes</h2>
+    <p>Las cifras de este prototipo son ilustrativas y siguen la estructura de los datos abiertos del Estado colombiano.</p>
+    <div class="escudos">
+      <div class="escudo"><b>MinTIC</b><small>Portal de Datos Abiertos</small><div class="tricolor"></div></div>
+      <div class="escudo"><b>DNP</b><small>Formulario Único Territorial</small><div class="tricolor"></div></div>
+      <div class="escudo"><b>SECOP II</b><small>Contratación pública</small><div class="tricolor"></div></div>
+      <div class="escudo"><b>DANE</b><small>Población y territorio</small><div class="tricolor"></div></div>
+    </div>
+  </section>
+</main>
+
+<p class="pie">Ejercicio de diseño con datos de demostración. No constituye una fuente oficial.</p>
+
+<script>
+const DATOS = {
+  "Valle del Cauca": {
+    municipios: {
+      "Cali": {hab:"2.280.000 habitantes", total:3120000000000, sectores:[
+        {n:"Educación", v:912000000000, d:"Alimentación escolar para 168.000 estudiantes, mejoramiento de 74 sedes y transporte escolar rural.", obra:"Megacolegio Comuna 18", estado:"En obra, 61% de avance"},
+        {n:"Salud", v:745000000000, d:"Régimen subsidiado, dotación de tres centros de salud y brigadas rurales en corregimientos.", obra:"Hospital Isaías Duarte, fase II", estado:"Contratado"},
+        {n:"Movilidad", v:684000000000, d:"Renovación de flota del MIO, repavimentación de 96 km de vías y ciclorrutas.", obra:"Corredor Verde, tramo norte", estado:"Estudios y diseños"},
+        {n:"Agua y saneamiento", v:412000000000, d:"Redes de acueducto en ladera y recuperación de siete quebradas urbanas.", obra:"PTAR Cañaveralejo", estado:"En operación"},
+        {n:"Cultura y deporte", v:367000000000, d:"Escuelas de música popular, 22 canchas sintéticas y programa de bibliotecas de barrio.", obra:"Centro cultural Siloé", estado:"Entregado"}
+      ]},
+      "Palmira": {hab:"356.000 habitantes", total:684000000000, sectores:[
+        {n:"Educación", v:201000000000, d:"Jornada única en 18 instituciones y becas para técnicos agropecuarios.", obra:"IE Cárdenas Mirriñao", estado:"En obra, 38% de avance"},
+        {n:"Agro y desarrollo rural", v:158000000000, d:"Distritos de riego, asistencia técnica y compras públicas a campesinos.", obra:"Distrito de riego Bolo", estado:"Contratado"},
+        {n:"Salud", v:143000000000, d:"Ampliación de urgencias y red de atención primaria en zona plana.", obra:"Hospital San Vicente de Paúl", estado:"En obra, 22% de avance"},
+        {n:"Seguridad", v:98000000000, d:"Cámaras de vigilancia, iluminación pública y casas de justicia.", obra:"Circuito cerrado municipal", estado:"Entregado"},
+        {n:"Vivienda", v:84000000000, d:"Mejoramiento de 1.240 viviendas y titulación de predios.", obra:"Plan de mejoramiento Zamorano", estado:"Convocatoria abierta"}
+      ]},
+      "Dagua": {hab:"38.500 habitantes", total:92400000000, sectores:[
+        {n:"Vías rurales", v:29500000000, d:"Placa huella en 41 km de vías veredales y mantenimiento de puentes.", obra:"Vía El Queremal–Borrero Ayerbe", estado:"En obra, 54% de avance"},
+        {n:"Agua potable", v:21300000000, d:"Acueductos veredales para 12 corregimientos y tanques de almacenamiento.", obra:"Acueducto Atuncela", estado:"Contratado"},
+        {n:"Educación", v:18900000000, d:"Transporte escolar rural, conectividad y dotación de aulas.", obra:"IE Simón Bolívar, bloque nuevo", estado:"Estudios y diseños"},
+        {n:"Ambiente", v:12400000000, d:"Protección de la cuenca del río Dagua y reforestación de 180 hectáreas.", obra:"Plan de manejo cuenca alta", estado:"En ejecución"},
+        {n:"Cultura y deporte", v:10300000000, d:"Escuela de formación deportiva y recuperación de la casa de la cultura.", obra:"Polideportivo municipal", estado:"Entregado"}
+      ]},
+      "Buenaventura": {hab:"311.000 habitantes", total:1040000000000, sectores:[
+        {n:"Agua y saneamiento", v:348000000000, d:"Reposición de redes en 14 barrios y planta de tratamiento del distrito.", obra:"Acueducto distrital, fase III", estado:"En obra, 44% de avance"},
+        {n:"Educación", v:262000000000, d:"Alimentación escolar, transporte fluvial de estudiantes y dotación.", obra:"IE Pascual de Andagoya", estado:"Contratado"},
+        {n:"Salud", v:198000000000, d:"Red de urgencias, dotación hospitalaria y puestos de salud fluviales.", obra:"Hospital Luis Ablanque", estado:"En obra, 17% de avance"},
+        {n:"Infraestructura portuaria y vial", v:142000000000, d:"Vías de acceso al puerto y mantenimiento del malecón.", obra:"Malecón Bahía de la Cruz", estado:"Entregado"},
+        {n:"Vivienda", v:90000000000, d:"Reubicación de familias en zonas de bajamar y mejoramiento de vivienda palafítica.", obra:"Ciudadela San Antonio", estado:"Convocatoria abierta"}
+      ]}
+    }
+  },
+  "Antioquia": {
+    municipios: {
+      "Medellín": {hab:"2.530.000 habitantes", total:4180000000000, sectores:[
+        {n:"Movilidad", v:1210000000000, d:"Metro de la 80, mantenimiento de metrocables y renovación de buses eléctricos.", obra:"Metro de la 80", estado:"En obra, 29% de avance"},
+        {n:"Educación", v:1080000000000, d:"Programa de becas universitarias y jornada complementaria.", obra:"Ciudadela universitaria noroccidental", estado:"Contratado"},
+        {n:"Salud", v:842000000000, d:"Red de UPSS barriales y atención en salud mental.", obra:"Unidad hospitalaria Buenos Aires", estado:"En obra, 66% de avance"},
+        {n:"Seguridad y convivencia", v:584000000000, d:"Sistema de videovigilancia, justicia cercana y prevención juvenil.", obra:"Centro de comando C4", estado:"En operación"},
+        {n:"Ambiente", v:464000000000, d:"Corredores verdes, arborización y calidad del aire en el valle.", obra:"Corredor verde Oriental", estado:"Entregado"}
+      ]},
+      "Rionegro": {hab:"145.000 habitantes", total:412000000000, sectores:[
+        {n:"Movilidad", v:132000000000, d:"Ampliación de la vía a La Ceja y nuevas intersecciones viales.", obra:"Doble calzada Rionegro–La Ceja", estado:"En obra, 48% de avance"},
+        {n:"Educación", v:98000000000, d:"Cobertura en zona rural y programa de bilingüismo.", obra:"IE rural Llanogrande", estado:"Contratado"},
+        {n:"Ambiente", v:76000000000, d:"Recuperación del río Negro y control de vertimientos.", obra:"Parque lineal del río", estado:"En obra, 35% de avance"},
+        {n:"Salud", v:62000000000, d:"Ampliación de urgencias y red de atención primaria.", obra:"Hospital San Juan de Dios", estado:"Estudios y diseños"},
+        {n:"Cultura y deporte", v:44000000000, d:"Escenarios deportivos barriales y festivales culturales.", obra:"Unidad deportiva El Porvenir", estado:"Entregado"}
+      ]},
+      "Apartadó": {hab:"195.000 habitantes", total:298000000000, sectores:[
+        {n:"Agua y saneamiento", v:94000000000, d:"Acueducto urbano y alcantarillado en barrios del oriente.", obra:"PTAR Apartadó", estado:"En obra, 52% de avance"},
+        {n:"Educación", v:82000000000, d:"Alimentación escolar y conectividad rural.", obra:"IE Policarpa Salavarrieta", estado:"Contratado"},
+        {n:"Agro y desarrollo rural", v:56000000000, d:"Apoyo a pequeños productores de banano y plátano.", obra:"Centro de acopio agroindustrial", estado:"En ejecución"},
+        {n:"Salud", v:38000000000, d:"Dotación hospitalaria y brigadas en veredas.", obra:"Hospital Antonio Roldán", estado:"Entregado"},
+        {n:"Vivienda", v:28000000000, d:"Mejoramiento de 860 viviendas y legalización de barrios.", obra:"Plan Vivienda Digna", estado:"Convocatoria abierta"}
+      ]}
+    }
+  },
+  "Atlántico": {
+    municipios: {
+      "Barranquilla": {hab:"1.320.000 habitantes", total:2460000000000, sectores:[
+        {n:"Educación", v:720000000000, d:"Colegios de jornada única y alimentación escolar en 152 sedes.", obra:"Megacolegio Suroccidente", estado:"En obra, 71% de avance"},
+        {n:"Salud", v:598000000000, d:"Red de pasos hospitalarios y atención materno-infantil.", obra:"Hospital Juan Domínguez Romero", estado:"Contratado"},
+        {n:"Drenajes y arroyos", v:486000000000, d:"Canalización de arroyos y obras de mitigación de inundaciones.", obra:"Canalización arroyo Felicidad", estado:"En obra, 40% de avance"},
+        {n:"Espacio público", v:352000000000, d:"Parques de barrio, malecón y recuperación de plazas.", obra:"Gran Malecón, tramo oriental", estado:"Entregado"},
+        {n:"Movilidad", v:304000000000, d:"Corredores de transporte público y semaforización inteligente.", obra:"Corredor Murillo", estado:"Estudios y diseños"}
+      ]},
+      "Soledad": {hab:"690.000 habitantes", total:842000000000, sectores:[
+        {n:"Agua y saneamiento", v:268000000000, d:"Reposición de redes de alcantarillado en 22 barrios.", obra:"Alcantarillado suroriente", estado:"En obra, 33% de avance"},
+        {n:"Educación", v:224000000000, d:"Construcción de aulas y transporte escolar.", obra:"IE Villa Estadio", estado:"Contratado"},
+        {n:"Salud", v:176000000000, d:"Centros de atención primaria y urgencias pediátricas.", obra:"CAMI Hipódromo", estado:"En obra, 12% de avance"},
+        {n:"Movilidad", v:98000000000, d:"Pavimentación de 40 km de vías barriales.", obra:"Plan de vías barriales", estado:"En ejecución"},
+        {n:"Cultura y deporte", v:76000000000, d:"Escuelas deportivas y recuperación de canchas.", obra:"Villa Olímpica municipal", estado:"Entregado"}
+      ]}
+    }
+  },
+  "Cundinamarca": {
+    municipios: {
+      "Soacha": {hab:"810.000 habitantes", total:1180000000000, sectores:[
+        {n:"Educación", v:386000000000, d:"Nuevas aulas en Altos de Cazucá y alimentación escolar.", obra:"Megacolegio Ciudad Verde", estado:"En obra, 58% de avance"},
+        {n:"Movilidad", v:298000000000, d:"Extensión de TransMilenio y pavimentación de vías locales.", obra:"Troncal Autopista Sur", estado:"Contratado"},
+        {n:"Salud", v:212000000000, d:"Ampliación hospitalaria y centros de atención primaria.", obra:"Hospital Mario Gaitán", estado:"En obra, 26% de avance"},
+        {n:"Agua y saneamiento", v:156000000000, d:"Redes de acueducto en comunas altas y control de vertimientos.", obra:"Acueducto Comuna 4", estado:"Estudios y diseños"},
+        {n:"Seguridad", v:128000000000, d:"Cámaras, iluminación y programas de convivencia juvenil.", obra:"Circuito de videovigilancia", estado:"Entregado"}
+      ]},
+      "Zipaquirá": {hab:"155.000 habitantes", total:326000000000, sectores:[
+        {n:"Turismo y cultura", v:98000000000, d:"Mantenimiento de la Catedral de Sal y señalización del centro histórico.", obra:"Plan centro histórico", estado:"En obra, 45% de avance"},
+        {n:"Educación", v:86000000000, d:"Jornada única y dotación tecnológica.", obra:"IE La Esperanza", estado:"Contratado"},
+        {n:"Agua y saneamiento", v:64000000000, d:"Optimización de la planta de tratamiento y redes urbanas.", obra:"PTAP Zipaquirá", estado:"En operación"},
+        {n:"Movilidad", v:48000000000, d:"Vías rurales y conexión con el Regiotram del norte.", obra:"Estación Regiotram", estado:"Estudios y diseños"},
+        {n:"Salud", v:30000000000, d:"Centros de salud rurales y jornadas de prevención.", obra:"Centro de salud Barandillas", estado:"Entregado"}
+      ]}
+    }
+  },
+  "Nariño": {
+    municipios: {
+      "Pasto": {hab:"405.000 habitantes", total:712000000000, sectores:[
+        {n:"Educación", v:216000000000, d:"Cobertura rural, alimentación escolar y formación docente.", obra:"IE Ciudad de Pasto", estado:"En obra, 49% de avance"},
+        {n:"Movilidad", v:168000000000, d:"Sistema estratégico de transporte y repavimentación urbana.", obra:"Corredor Avenida Panamericana", estado:"Contratado"},
+        {n:"Cultura", v:132000000000, d:"Carnaval de Negros y Blancos, talleres de artesanos y museos.", obra:"Casa del Carnaval", estado:"En operación"},
+        {n:"Salud", v:114000000000, d:"Red hospitalaria y salud mental comunitaria.", obra:"Hospital Civil de Pasto", estado:"En obra, 31% de avance"},
+        {n:"Agua y saneamiento", v:82000000000, d:"Acueductos veredales y manejo de residuos sólidos.", obra:"Relleno sanitario Antanas", estado:"Entregado"}
+      ]},
+      "Ipiales": {hab:"148.000 habitantes", total:264000000000, sectores:[
+        {n:"Movilidad y frontera", v:84000000000, d:"Accesos al puente de Rumichaca y vías de integración fronteriza.", obra:"Corredor Rumichaca", estado:"En obra, 37% de avance"},
+        {n:"Educación", v:68000000000, d:"Transporte escolar rural y dotación de aulas.", obra:"IE San Juan Bosco", estado:"Contratado"},
+        {n:"Salud", v:52000000000, d:"Urgencias, atención a población migrante y brigadas rurales.", obra:"Hospital Civil de Ipiales", estado:"En ejecución"},
+        {n:"Agua potable", v:38000000000, d:"Acueductos veredales y optimización de redes urbanas.", obra:"Acueducto La Victoria", estado:"Estudios y diseños"},
+        {n:"Turismo", v:22000000000, d:"Senderos y servicios en el entorno del Santuario de Las Lajas.", obra:"Sendero Las Lajas", estado:"Entregado"}
+      ]}
+    }
+  },
+  "Santander": {
+    municipios: {
+      "Bucaramanga": {hab:"615.000 habitantes", total:1090000000000, sectores:[
+        {n:"Educación", v:342000000000, d:"Jornada única, alimentación escolar y becas técnicas.", obra:"IE Café Madrid", estado:"En obra, 63% de avance"},
+        {n:"Movilidad", v:246000000000, d:"Metrolínea, ciclorrutas y mantenimiento de escarpas viales.", obra:"Intercambiador Neomundo", estado:"Contratado"},
+        {n:"Salud", v:198000000000, d:"Red pública de urgencias y atención primaria en comunas.", obra:"Hospital Local del Norte", estado:"En obra, 21% de avance"},
+        {n:"Ambiente", v:172000000000, d:"Estabilización de escarpas y protección del páramo de Santurbán.", obra:"Parque lineal La Flora", estado:"En ejecución"},
+        {n:"Vivienda", v:132000000000, d:"Reasentamiento en zonas de riesgo y mejoramiento integral de barrios.", obra:"Ciudadela Norte", estado:"Convocatoria abierta"}
+      ]},
+      "Barrancabermeja": {hab:"200.000 habitantes", total:498000000000, sectores:[
+        {n:"Agua y saneamiento", v:152000000000, d:"Alcantarillado en comunas nororientales y manejo de ciénagas.", obra:"PTAR San Silvestre", estado:"En obra, 41% de avance"},
+        {n:"Educación", v:124000000000, d:"Dotación escolar, bilingüismo y transporte fluvial.", obra:"IE Diego Hernández de Gallegos", estado:"Contratado"},
+        {n:"Salud", v:96000000000, d:"Urgencias, salud ambiental y atención materno-infantil.", obra:"Hospital Regional del Magdalena Medio", estado:"En ejecución"},
+        {n:"Ambiente", v:74000000000, d:"Recuperación de humedales y monitoreo de calidad del aire.", obra:"Ciénaga Miramar", estado:"Entregado"},
+        {n:"Movilidad", v:52000000000, d:"Pavimentación de vías urbanas y muelle de pasajeros.", obra:"Malecón del río", estado:"Estudios y diseños"}
+      ]}
+    }
+  }
+};
+
+const $ = s => document.querySelector(s);
+const campo = $("#campo"), lista = $("#opciones"), vacio = $("#vacio"),
+      intro = $("#intro"), volver = $("#volver"), titulo = $("#titulo");
+let dep = null, mun = null;
+
+const plata = n => {
+  if (n >= 1e12) return "$" + (n/1e12).toFixed(2).replace(".",",") + " billones";
+  if (n >= 1e9)  return "$" + Math.round(n/1e9).toLocaleString("es-CO") + " mil millones";
+  return "$" + n.toLocaleString("es-CO");
+};
+
+function marcarPaso(n){
+  document.querySelectorAll(".paso").forEach(p => {
+    const i = +p.dataset.paso;
+    p.dataset.activo = i === n ? "si" : "no";
+    p.dataset.hecho  = i <  n ? "si" : "no";
+  });
+}
+
+function pintarDepartamentos(filtro = ""){
+  const q = filtro.trim().toLowerCase();
+  const nombres = Object.keys(DATOS)
+    .filter(d => d.toLowerCase().includes(q))
+    .sort((a,b) => a.localeCompare(b,"es"));
+  lista.innerHTML = nombres.map(d => {
+    const m = Object.keys(DATOS[d].municipios).length;
+    return `<li><button class="opcion" data-dep="${d}">
+      <span>${d}</span><small>${m} municipios</small></button></li>`;
+  }).join("");
+  vacio.hidden = nombres.length > 0;
+}
+
+function pintarMunicipios(){
+  const municipios = DATOS[dep].municipios;
+  lista.innerHTML = Object.keys(municipios).map(m => `
+    <li><button class="opcion" data-mun="${m}">
+      <span>${m}</span><small>${plata(municipios[m].total)}</small></button></li>`).join("");
+  vacio.hidden = true;
+}
+
+function abrirMunicipio(){
+  const info = DATOS[dep].municipios[mun];
+  $("#pantallaLista").hidden = true;
+  $("#pantallaMunicipio").hidden = false;
+  $("#nombreMun").textContent = mun;
+  $("#metaMun").textContent = dep + " · " + info.hab;
+  $("#totalMun").textContent = plata(info.total);
+  const tope = Math.max(...info.sectores.map(s => s.v));
+  $("#sectores").innerHTML = info.sectores.map((s,i) => `
+    <li><button class="sector" aria-expanded="false" data-i="${i}">
+      <span class="sectorFila"><b>${s.n}</b><span>${plata(s.v)} · ${Math.round(s.v/info.total*100)}%</span></span>
+      <span class="riel"><i style="width:${Math.round(s.v/tope*100)}%"></i></span>
+    </button></li>`).join("");
+  marcarPaso(3);
+  $("#consulta").scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+/* clic 1 y 2 */
+lista.addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  if (b.dataset.dep){                       // ── clic 1
+    dep = b.dataset.dep;
+    titulo.textContent = "Elige tu municipio en " + dep;
+    campo.value = ""; campo.hidden = true;
+    intro.hidden = true; volver.hidden = false;
+    marcarPaso(2); pintarMunicipios();
+  } else if (b.dataset.mun){                // ── clic 2
+    mun = b.dataset.mun;
+    abrirMunicipio();
+  }
+});
+
+/* clic 3: abrir el detalle de un sector */
+$("#sectores").addEventListener("click", e => {
+  const b = e.target.closest(".sector"); if(!b) return;
+  const abierto = b.getAttribute("aria-expanded") === "true";
+  document.querySelectorAll(".sector").forEach(s => {
+    s.setAttribute("aria-expanded","false");
+    const d = s.querySelector(".detalle"); if(d) d.remove();
+  });
+  if (abierto) return;
+  const s = DATOS[dep].municipios[mun].sectores[+b.dataset.i];
+  b.setAttribute("aria-expanded","true");
+  b.insertAdjacentHTML("beforeend", `
+    <span class="detalle">
+      <span>${s.d}</span>
+      <dl><dt>Proyecto principal</dt><dd>${s.obra}</dd>
+          <dt>Estado</dt><dd>${s.estado}</dd>
+          <dt>Fuente</dt><dd>FUT · SECOP II, corte diciembre 2025</dd></dl>
+    </span>`);
+});
+
+volver.addEventListener("click", () => {
+  dep = null; volver.hidden = true; campo.hidden = false; intro.hidden = false;
+  titulo.textContent = "Consulta dónde va la plata en tu municipio";
+  marcarPaso(1); pintarDepartamentos(campo.value);
+});
+
+$("#volverMun").addEventListener("click", () => {
+  $("#pantallaMunicipio").hidden = true;
+  $("#pantallaLista").hidden = false;
+  marcarPaso(2); pintarMunicipios();
+});
+
+campo.addEventListener("input", () => pintarDepartamentos(campo.value));
+marcarPaso(1);
+pintarDepartamentos();
+</script>
 </body>
 </html>
